@@ -35,18 +35,18 @@
 <div class="grain">
 
 <!-- Nav -->
-<nav class="fixed top-0 left-0 right-0 z-50 mix-blend-difference">
+<nav class="fixed top-0 left-0 right-0 z-50 bg-cream/80 backdrop-blur-md border-b border-warm-200/50">
 	<div class="flex justify-between items-center px-6 md:px-12 py-6">
-		<a href="/" class="font-display text-lg text-cream">Table Talk</a>
+		<a href="/" class="font-display text-lg text-ink">Table Talk</a>
 
-		<div class="hidden md:flex gap-12 text-sm text-cream/70">
-			<a href="#product" class="hover:text-cream transition-colors">Product</a>
-			<a href="#pricing" class="hover:text-cream transition-colors">Pricing</a>
-			<a href="#contact" class="hover:text-cream transition-colors">Contact</a>
+		<div class="hidden md:flex gap-12 text-sm text-warm-600">
+			<a href="#product" class="hover:text-ink transition-colors">Product</a>
+			<a href="#pricing" class="hover:text-ink transition-colors">Pricing</a>
+			<a href="#contact" class="hover:text-ink transition-colors">Contact</a>
 		</div>
 
 		<button
-			class="md:hidden text-cream"
+			class="md:hidden text-ink"
 			onclick={() => menuOpen = !menuOpen}
 			aria-label="Menu"
 		>
@@ -90,10 +90,12 @@
 
 			<a
 				href="#contact"
-				class="group inline-flex items-center gap-4 text-ink reveal delay-3"
+				class="inline-flex items-center gap-3 bg-coral text-cream px-6 py-3 hover:bg-coral/90 transition-colors reveal delay-3"
 			>
-				<span class="text-sm tracking-wide">Start free trial</span>
-				<span class="w-12 h-px bg-ink group-hover:w-20 group-hover:bg-coral transition-all duration-500"></span>
+				<span class="text-sm font-medium tracking-wide">Start free trial</span>
+				<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+				</svg>
 			</a>
 		</div>
 
@@ -339,12 +341,14 @@
 			<button
 				type="submit"
 				disabled={formStatus === 'sending'}
-				class="group inline-flex items-center gap-4 mt-4 disabled:opacity-50"
+				class="inline-flex items-center gap-3 bg-ink text-cream px-6 py-3 hover:bg-warm-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed mt-4"
 			>
-				<span class="text-sm tracking-wide">
+				<span class="text-sm font-medium tracking-wide">
 					{formStatus === 'sending' ? 'Sending...' : 'Send message'}
 				</span>
-				<span class="w-12 h-px bg-ink group-hover:w-20 group-hover:bg-coral transition-all duration-500"></span>
+				<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+				</svg>
 			</button>
 		</form>
 
