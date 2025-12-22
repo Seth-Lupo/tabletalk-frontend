@@ -1,459 +1,313 @@
 <script lang="ts">
-	let mobileMenuOpen = $state(false);
+	let menuOpen = $state(false);
 </script>
 
 <svelte:head>
-	<title>Table Talk - Never Miss a Call Again</title>
-	<meta name="description" content="AI-powered voice agent for restaurants. Handle reservations, answer menu questions, and take orders 24/7." />
+	<title>Table Talk</title>
+	<meta name="description" content="Never miss a call again. AI voice agent for restaurants." />
 </svelte:head>
 
-<!-- Navigation -->
-<nav class="fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur-sm border-b border-warm-gray-200">
-	<div class="max-w-6xl mx-auto px-6 py-4">
-		<div class="flex items-center justify-between">
-			<a href="/" class="font-display text-2xl font-semibold tracking-tight text-charcoal">
-				Table Talk
-			</a>
+<div class="grain">
 
-			<!-- Desktop Navigation -->
-			<div class="hidden md:flex items-center gap-8">
-				<a href="#product" class="text-warm-gray-600 hover:text-charcoal transition-colors font-body">Product</a>
-				<a href="#pricing" class="text-warm-gray-600 hover:text-charcoal transition-colors font-body">Pricing</a>
-				<a href="#contact" class="text-warm-gray-600 hover:text-charcoal transition-colors font-body">Contact</a>
-				<a href="#contact" class="btn-primary">Get Started</a>
-			</div>
+<!-- Nav -->
+<nav class="fixed top-0 left-0 right-0 z-50 mix-blend-difference">
+	<div class="flex justify-between items-center px-6 md:px-12 py-6">
+		<a href="/" class="font-display text-lg text-cream">Table Talk</a>
 
-			<!-- Mobile Menu Button -->
-			<button
-				class="md:hidden p-2"
-				onclick={() => mobileMenuOpen = !mobileMenuOpen}
-				aria-label="Toggle menu"
-			>
-				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					{#if mobileMenuOpen}
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-					{:else}
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-					{/if}
-				</svg>
-			</button>
+		<div class="hidden md:flex gap-12 text-sm text-cream/70">
+			<a href="#product" class="hover:text-cream transition-colors">Product</a>
+			<a href="#pricing" class="hover:text-cream transition-colors">Pricing</a>
+			<a href="#contact" class="hover:text-cream transition-colors">Contact</a>
 		</div>
 
-		<!-- Mobile Menu -->
-		{#if mobileMenuOpen}
-			<div class="md:hidden pt-4 pb-2 border-t border-warm-gray-200 mt-4">
-				<div class="flex flex-col gap-4">
-					<a href="#product" class="text-warm-gray-600 hover:text-charcoal transition-colors" onclick={() => mobileMenuOpen = false}>Product</a>
-					<a href="#pricing" class="text-warm-gray-600 hover:text-charcoal transition-colors" onclick={() => mobileMenuOpen = false}>Pricing</a>
-					<a href="#contact" class="text-warm-gray-600 hover:text-charcoal transition-colors" onclick={() => mobileMenuOpen = false}>Contact</a>
-					<a href="#contact" class="btn-primary text-center" onclick={() => mobileMenuOpen = false}>Get Started</a>
-				</div>
-			</div>
-		{/if}
+		<button
+			class="md:hidden text-cream"
+			onclick={() => menuOpen = !menuOpen}
+			aria-label="Menu"
+		>
+			{menuOpen ? 'Close' : 'Menu'}
+		</button>
 	</div>
 </nav>
 
-<!-- Hero Section -->
-<section class="min-h-screen flex items-center justify-center texture-overlay grid-texture pt-20">
-	<div class="max-w-4xl mx-auto px-6 py-24 text-center">
-		<div class="animate-fade-in-up opacity-0">
-			<p class="font-display text-warm-gray-500 tracking-widest uppercase text-sm mb-6">
-				For Restaurants That Care
-			</p>
-		</div>
+<!-- Mobile Menu -->
+{#if menuOpen}
+<div class="fixed inset-0 z-40 bg-ink flex flex-col justify-center items-center gap-8">
+	<a href="#product" class="font-display text-4xl text-cream" onclick={() => menuOpen = false}>Product</a>
+	<a href="#pricing" class="font-display text-4xl text-cream" onclick={() => menuOpen = false}>Pricing</a>
+	<a href="#contact" class="font-display text-4xl text-cream" onclick={() => menuOpen = false}>Contact</a>
+</div>
+{/if}
 
-		<h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-medium text-charcoal mb-8 animate-fade-in-up opacity-0 animation-delay-100">
-			Never Miss<br />
-			<span class="italic">a Call</span> Again
+
+<!-- Hero -->
+<section class="min-h-screen flex flex-col justify-end px-6 md:px-12 pb-24 md:pb-32">
+
+	<div class="max-w-7xl">
+		<p class="text-warm-400 text-sm tracking-wide mb-8 reveal">For restaurants that care</p>
+
+		<h1 class="text-5xl md:text-7xl lg:text-[8rem] xl:text-[10rem] leading-[0.9] reveal delay-1">
+			Never miss
 		</h1>
 
-		<div class="decorative-line mx-auto mb-8 animate-fade-in-up opacity-0 animation-delay-200"></div>
+		<div class="flex items-baseline gap-4 md:gap-8 reveal delay-2">
+			<span class="text-5xl md:text-7xl lg:text-[8rem] xl:text-[10rem] font-display italic">a call</span>
+			<span class="text-coral text-2xl md:text-4xl">again</span>
+		</div>
+	</div>
 
-		<p class="font-body text-xl md:text-2xl text-warm-gray-600 max-w-2xl mx-auto mb-12 animate-fade-in-up opacity-0 animation-delay-300">
-			Your AI-powered voice agent handles reservations, answers questions, and takes orders while you focus on what matters most — your guests.
+	<div class="mt-24 md:mt-32 flex flex-col md:flex-row md:items-end justify-between gap-12 reveal delay-3">
+		<p class="text-warm-600 max-w-md text-lg">
+			Your AI voice agent handles reservations, answers questions,
+			and takes orders while you focus on your guests.
 		</p>
 
-		<div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up opacity-0 animation-delay-400">
-			<a href="#contact" class="btn-primary">Start Your Free Trial</a>
-			<a href="#product" class="btn-secondary">See How It Works</a>
-		</div>
-
-		<!-- 80s Style Decorative Element -->
-		<div class="mt-20 animate-fade-in-up opacity-0 animation-delay-500">
-			<div class="flex items-center justify-center gap-4 text-warm-gray-400">
-				<div class="w-12 h-px bg-warm-gray-300"></div>
-				<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-					<path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-				</svg>
-				<div class="w-12 h-px bg-warm-gray-300"></div>
-			</div>
-		</div>
+		<a
+			href="#contact"
+			class="group inline-flex items-center gap-4 text-ink"
+		>
+			<span class="text-sm tracking-wide">Start free trial</span>
+			<span class="w-12 h-px bg-ink group-hover:w-20 group-hover:bg-coral transition-all duration-500"></span>
+		</a>
 	</div>
 </section>
 
-<!-- Product Section -->
-<section id="product" class="py-24 md:py-32 bg-paper halftone">
-	<div class="max-w-6xl mx-auto px-6">
-		<div class="text-center mb-16">
-			<p class="font-display text-warm-gray-500 tracking-widest uppercase text-sm mb-4">
-				The Product
-			</p>
-			<h2 class="font-display text-4xl md:text-5xl font-medium text-charcoal mb-6">
-				Your 24/7 Voice Concierge
+
+<!-- Product -->
+<section id="product" class="py-32 md:py-48">
+
+	<!-- Opening statement -->
+	<div class="px-6 md:px-12 mb-32 md:mb-48">
+		<div class="max-w-6xl ml-auto">
+			<h2 class="font-display text-4xl md:text-6xl lg:text-7xl max-w-4xl leading-[1.1]">
+				A warm voice that knows your restaurant
+				<span class="italic text-warm-400">inside and out</span>
 			</h2>
-			<div class="decorative-line mx-auto mb-6"></div>
-			<p class="font-body text-lg text-warm-gray-600 max-w-2xl mx-auto">
-				A warm, friendly voice that knows your restaurant inside and out — from your daily specials to every ingredient in every dish.
-			</p>
-		</div>
-
-		<!-- Features Grid -->
-		<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-			<!-- Feature 1: Reservations -->
-			<div class="paper-texture p-8 border border-warm-gray-200 hover:border-warm-gray-300 transition-colors">
-				<div class="w-12 h-12 bg-warm-gray-100 rounded-full flex items-center justify-center mb-6">
-					<svg class="w-6 h-6 text-warm-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-					</svg>
-				</div>
-				<h3 class="font-display text-xl font-medium text-charcoal mb-3">
-					Seamless Reservations
-				</h3>
-				<p class="font-body text-warm-gray-600">
-					Connects directly to OpenTable, Resy, or your existing system. Books tables, confirms parties, and handles special requests with grace.
-				</p>
-			</div>
-
-			<!-- Feature 2: Menu & Allergens -->
-			<div class="paper-texture p-8 border border-warm-gray-200 hover:border-warm-gray-300 transition-colors">
-				<div class="w-12 h-12 bg-warm-gray-100 rounded-full flex items-center justify-center mb-6">
-					<svg class="w-6 h-6 text-warm-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-					</svg>
-				</div>
-				<h3 class="font-display text-xl font-medium text-charcoal mb-3">
-					Menu Knowledge
-				</h3>
-				<p class="font-body text-warm-gray-600">
-					Every dish, every ingredient, every allergen. Your voice agent answers dietary questions with confidence and care.
-				</p>
-			</div>
-
-			<!-- Feature 3: Food Orders -->
-			<div class="paper-texture p-8 border border-warm-gray-200 hover:border-warm-gray-300 transition-colors">
-				<div class="w-12 h-12 bg-warm-gray-100 rounded-full flex items-center justify-center mb-6">
-					<svg class="w-6 h-6 text-warm-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-					</svg>
-				</div>
-				<h3 class="font-display text-xl font-medium text-charcoal mb-3">
-					Takeout & Delivery
-				</h3>
-				<p class="font-body text-warm-gray-600">
-					Takes orders over the phone, confirms details, and sends them straight to your kitchen. No third-party fees eating your margins.
-				</p>
-			</div>
-
-			<!-- Feature 4: Hours & Info -->
-			<div class="paper-texture p-8 border border-warm-gray-200 hover:border-warm-gray-300 transition-colors">
-				<div class="w-12 h-12 bg-warm-gray-100 rounded-full flex items-center justify-center mb-6">
-					<svg class="w-6 h-6 text-warm-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-					</svg>
-				</div>
-				<h3 class="font-display text-xl font-medium text-charcoal mb-3">
-					Always Informed
-				</h3>
-				<p class="font-body text-warm-gray-600">
-					Hours, location, parking, private dining — every question answered instantly while your staff stays focused on service.
-				</p>
-			</div>
-
-			<!-- Feature 5: Natural Conversation -->
-			<div class="paper-texture p-8 border border-warm-gray-200 hover:border-warm-gray-300 transition-colors">
-				<div class="w-12 h-12 bg-warm-gray-100 rounded-full flex items-center justify-center mb-6">
-					<svg class="w-6 h-6 text-warm-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-					</svg>
-				</div>
-				<h3 class="font-display text-xl font-medium text-charcoal mb-3">
-					Naturally Human
-				</h3>
-				<p class="font-body text-warm-gray-600">
-					No robotic menus or "press 1 for..." — just warm, natural conversation that reflects your restaurant's personality.
-				</p>
-			</div>
-
-			<!-- Feature 6: Handoff -->
-			<div class="paper-texture p-8 border border-warm-gray-200 hover:border-warm-gray-300 transition-colors">
-				<div class="w-12 h-12 bg-warm-gray-100 rounded-full flex items-center justify-center mb-6">
-					<svg class="w-6 h-6 text-warm-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-					</svg>
-				</div>
-				<h3 class="font-display text-xl font-medium text-charcoal mb-3">
-					Smart Handoffs
-				</h3>
-				<p class="font-body text-warm-gray-600">
-					Complex requests? Special occasions? The AI knows when to connect callers to your team for that personal touch.
-				</p>
-			</div>
-		</div>
-
-		<!-- Social Proof -->
-		<div class="mt-20 text-center">
-			<p class="font-display text-warm-gray-500 italic text-lg mb-8">
-				"It's like having the best host in town answer every call."
-			</p>
-			<div class="flex items-center justify-center gap-8 text-warm-gray-400">
-				<span class="font-body text-sm">Trusted by 200+ restaurants</span>
-				<span>·</span>
-				<span class="font-body text-sm">50,000+ calls handled monthly</span>
-			</div>
 		</div>
 	</div>
+
+	<!-- Feature: Reservations -->
+	<div class="grid md:grid-cols-2 gap-8 md:gap-0 mb-32 md:mb-48 px-6 md:px-0">
+		<div class="md:pl-12 md:pr-24 flex flex-col justify-center">
+			<p class="text-coral text-sm tracking-wide mb-4">01</p>
+			<h3 class="font-display text-3xl md:text-4xl mb-6">Reservations</h3>
+			<p class="text-warm-600 text-lg">
+				Connects to OpenTable, Resy, or your system. Books tables,
+				confirms parties, handles special requests. No hold music.
+				No missed opportunities.
+			</p>
+		</div>
+		<div class="bg-stone h-64 md:h-auto"></div>
+	</div>
+
+	<!-- Feature: Menu Knowledge -->
+	<div class="grid md:grid-cols-2 gap-8 md:gap-0 mb-32 md:mb-48 px-6 md:px-0">
+		<div class="bg-stone h-64 md:h-96 order-2 md:order-1"></div>
+		<div class="md:pl-24 md:pr-12 flex flex-col justify-center order-1 md:order-2">
+			<p class="text-coral text-sm tracking-wide mb-4">02</p>
+			<h3 class="font-display text-3xl md:text-4xl mb-6">Menu & allergens</h3>
+			<p class="text-warm-600 text-lg">
+				Every dish. Every ingredient. Every allergen.
+				Answers dietary questions with the confidence of
+				your best server.
+			</p>
+		</div>
+	</div>
+
+	<!-- Feature: Orders -->
+	<div class="grid md:grid-cols-2 gap-8 md:gap-0 mb-32 md:mb-48 px-6 md:px-0">
+		<div class="md:pl-12 md:pr-24 flex flex-col justify-center">
+			<p class="text-coral text-sm tracking-wide mb-4">03</p>
+			<h3 class="font-display text-3xl md:text-4xl mb-6">Phone orders</h3>
+			<p class="text-warm-600 text-lg">
+				Takes orders, confirms details, sends them to your kitchen.
+				No third-party fees eating your margins.
+				Just direct connection.
+			</p>
+		</div>
+		<div class="bg-stone h-64 md:h-auto"></div>
+	</div>
+
+	<!-- Pull quote -->
+	<div class="px-6 md:px-12 py-24 md:py-32 bg-ink text-cream">
+		<blockquote class="max-w-4xl mx-auto text-center">
+			<p class="font-display text-3xl md:text-5xl lg:text-6xl italic leading-[1.2] mb-12">
+				"It's like having our best host answer every call"
+			</p>
+			<footer class="text-warm-400 text-sm tracking-wide">
+				Maria Chen, The Willow Room
+			</footer>
+		</blockquote>
+	</div>
+
+	<!-- The difference -->
+	<div class="px-6 md:px-12 py-32 md:py-48">
+		<div class="max-w-3xl">
+			<p class="text-coral text-sm tracking-wide mb-8">The difference</p>
+			<p class="text-2xl md:text-3xl lg:text-4xl text-ink leading-relaxed">
+				No robotic menus. No "press 1 for..."
+				Just natural conversation that sounds like
+				<em>you</em>. And when it matters most,
+				a seamless handoff to your team.
+			</p>
+		</div>
+	</div>
+
 </section>
 
-<!-- Pricing Section -->
-<section id="pricing" class="py-24 md:py-32 bg-cream texture-overlay">
-	<div class="max-w-5xl mx-auto px-6">
-		<div class="text-center mb-16">
-			<p class="font-display text-warm-gray-500 tracking-widest uppercase text-sm mb-4">
-				Pricing
-			</p>
-			<h2 class="font-display text-4xl md:text-5xl font-medium text-charcoal mb-6">
-				Simple, Honest Pricing
-			</h2>
-			<div class="decorative-line mx-auto mb-6"></div>
-			<p class="font-body text-lg text-warm-gray-600 max-w-xl mx-auto">
-				No hidden fees. No long contracts. Just straightforward pricing that scales with your needs.
+
+<!-- Pricing -->
+<section id="pricing" class="px-6 md:px-12 py-32 md:py-48 bg-stone">
+
+	<div class="max-w-6xl mx-auto">
+
+		<div class="mb-24 md:mb-32">
+			<h2 class="font-display text-4xl md:text-6xl mb-6">Pricing</h2>
+			<p class="text-warm-600 max-w-md">
+				No hidden fees. No long contracts.
+				Cancel anytime.
 			</p>
 		</div>
 
-		<!-- Pricing Cards -->
-		<div class="grid md:grid-cols-3 gap-8">
+		<div class="grid md:grid-cols-3 gap-px bg-warm-200">
+
 			<!-- Starter -->
-			<div class="paper-texture p-8 border border-warm-gray-200 hover:border-warm-gray-300 transition-colors">
-				<h3 class="font-display text-xl font-medium text-charcoal mb-2">Starter</h3>
-				<p class="font-body text-warm-gray-500 text-sm mb-6">For single locations just getting started</p>
-				<div class="mb-6">
-					<span class="font-display text-4xl font-medium text-charcoal">$149</span>
-					<span class="font-body text-warm-gray-500">/month</span>
-				</div>
-				<div class="decorative-line mb-6"></div>
-				<ul class="space-y-3 mb-8">
-					<li class="flex items-start gap-3">
-						<svg class="w-5 h-5 text-warm-gray-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-						</svg>
-						<span class="font-body text-warm-gray-600">Up to 500 calls/month</span>
-					</li>
-					<li class="flex items-start gap-3">
-						<svg class="w-5 h-5 text-warm-gray-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-						</svg>
-						<span class="font-body text-warm-gray-600">Reservation integration</span>
-					</li>
-					<li class="flex items-start gap-3">
-						<svg class="w-5 h-5 text-warm-gray-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-						</svg>
-						<span class="font-body text-warm-gray-600">Menu & allergen info</span>
-					</li>
-					<li class="flex items-start gap-3">
-						<svg class="w-5 h-5 text-warm-gray-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-						</svg>
-						<span class="font-body text-warm-gray-600">Basic analytics</span>
-					</li>
+			<div class="bg-stone p-8 md:p-12">
+				<p class="text-sm text-warm-400 mb-8">Starter</p>
+				<p class="font-display text-5xl md:text-6xl mb-2">$149</p>
+				<p class="text-warm-400 mb-12">/month</p>
+
+				<ul class="space-y-4 text-warm-600">
+					<li>500 calls/month</li>
+					<li>Reservation integration</li>
+					<li>Menu & allergen info</li>
+					<li>Basic analytics</li>
 				</ul>
-				<a href="#contact" class="btn-secondary w-full block text-center">Get Started</a>
 			</div>
 
-			<!-- Professional - Featured -->
-			<div class="paper-texture p-8 border-2 border-charcoal relative">
-				<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-charcoal text-cream px-4 py-1 font-display text-xs tracking-wider uppercase">
-					Most Popular
-				</div>
-				<h3 class="font-display text-xl font-medium text-charcoal mb-2">Professional</h3>
-				<p class="font-body text-warm-gray-500 text-sm mb-6">For restaurants ready to grow</p>
-				<div class="mb-6">
-					<span class="font-display text-4xl font-medium text-charcoal">$299</span>
-					<span class="font-body text-warm-gray-500">/month</span>
-				</div>
-				<div class="decorative-line mb-6"></div>
-				<ul class="space-y-3 mb-8">
-					<li class="flex items-start gap-3">
-						<svg class="w-5 h-5 text-charcoal mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-						</svg>
-						<span class="font-body text-warm-gray-600">Up to 2,000 calls/month</span>
-					</li>
-					<li class="flex items-start gap-3">
-						<svg class="w-5 h-5 text-charcoal mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-						</svg>
-						<span class="font-body text-warm-gray-600">Everything in Starter</span>
-					</li>
-					<li class="flex items-start gap-3">
-						<svg class="w-5 h-5 text-charcoal mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-						</svg>
-						<span class="font-body text-warm-gray-600">Phone ordering</span>
-					</li>
-					<li class="flex items-start gap-3">
-						<svg class="w-5 h-5 text-charcoal mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-						</svg>
-						<span class="font-body text-warm-gray-600">Custom voice personality</span>
-					</li>
-					<li class="flex items-start gap-3">
-						<svg class="w-5 h-5 text-charcoal mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-						</svg>
-						<span class="font-body text-warm-gray-600">Priority support</span>
-					</li>
+			<!-- Professional -->
+			<div class="bg-cream p-8 md:p-12 relative">
+				<span class="absolute top-0 left-0 right-0 h-1 bg-coral"></span>
+				<p class="text-sm text-coral mb-8">Professional</p>
+				<p class="font-display text-5xl md:text-6xl mb-2">$299</p>
+				<p class="text-warm-400 mb-12">/month</p>
+
+				<ul class="space-y-4 text-warm-600">
+					<li>2,000 calls/month</li>
+					<li>Everything in Starter</li>
+					<li>Phone ordering</li>
+					<li>Custom voice</li>
+					<li>Priority support</li>
 				</ul>
-				<a href="#contact" class="btn-primary w-full block text-center">Get Started</a>
 			</div>
 
 			<!-- Enterprise -->
-			<div class="paper-texture p-8 border border-warm-gray-200 hover:border-warm-gray-300 transition-colors">
-				<h3 class="font-display text-xl font-medium text-charcoal mb-2">Enterprise</h3>
-				<p class="font-body text-warm-gray-500 text-sm mb-6">For restaurant groups & chains</p>
-				<div class="mb-6">
-					<span class="font-display text-4xl font-medium text-charcoal">Custom</span>
-				</div>
-				<div class="decorative-line mb-6"></div>
-				<ul class="space-y-3 mb-8">
-					<li class="flex items-start gap-3">
-						<svg class="w-5 h-5 text-warm-gray-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-						</svg>
-						<span class="font-body text-warm-gray-600">Unlimited calls</span>
-					</li>
-					<li class="flex items-start gap-3">
-						<svg class="w-5 h-5 text-warm-gray-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-						</svg>
-						<span class="font-body text-warm-gray-600">Everything in Professional</span>
-					</li>
-					<li class="flex items-start gap-3">
-						<svg class="w-5 h-5 text-warm-gray-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-						</svg>
-						<span class="font-body text-warm-gray-600">Multi-location dashboard</span>
-					</li>
-					<li class="flex items-start gap-3">
-						<svg class="w-5 h-5 text-warm-gray-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-						</svg>
-						<span class="font-body text-warm-gray-600">Custom integrations</span>
-					</li>
-					<li class="flex items-start gap-3">
-						<svg class="w-5 h-5 text-warm-gray-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-						</svg>
-						<span class="font-body text-warm-gray-600">Dedicated account manager</span>
-					</li>
+			<div class="bg-stone p-8 md:p-12">
+				<p class="text-sm text-warm-400 mb-8">Enterprise</p>
+				<p class="font-display text-5xl md:text-6xl mb-2">Custom</p>
+				<p class="text-warm-400 mb-12">Let's talk</p>
+
+				<ul class="space-y-4 text-warm-600">
+					<li>Unlimited calls</li>
+					<li>Multi-location</li>
+					<li>Custom integrations</li>
+					<li>Dedicated manager</li>
 				</ul>
-				<a href="#contact" class="btn-secondary w-full block text-center">Contact Sales</a>
 			</div>
+
 		</div>
+
 	</div>
 </section>
 
-<!-- Contact Section -->
-<section id="contact" class="py-24 md:py-32 bg-paper halftone">
-	<div class="max-w-3xl mx-auto px-6">
-		<div class="text-center mb-12">
-			<p class="font-display text-warm-gray-500 tracking-widest uppercase text-sm mb-4">
-				Get In Touch
-			</p>
-			<h2 class="font-display text-4xl md:text-5xl font-medium text-charcoal mb-6">
-				Let's Talk
+
+<!-- Contact -->
+<section id="contact" class="px-6 md:px-12 py-32 md:py-48">
+
+	<div class="grid md:grid-cols-2 gap-16 md:gap-24 max-w-6xl mx-auto">
+
+		<div>
+			<h2 class="font-display text-4xl md:text-6xl lg:text-7xl mb-8">
+				Let's<br />talk
 			</h2>
-			<div class="decorative-line mx-auto mb-6"></div>
-			<p class="font-body text-lg text-warm-gray-600">
-				Ready to transform how your restaurant handles calls? <br class="hidden md:block" />
+			<p class="text-warm-600 text-lg mb-12">
+				Ready to transform how your restaurant handles calls?
 				We'd love to hear from you.
 			</p>
+
+			<div class="space-y-4 text-warm-400">
+				<p>hello@tabletalk.ai</p>
+				<p>(800) 555-1234</p>
+			</div>
 		</div>
 
-		<!-- Contact Form -->
-		<form class="paper-texture p-8 md:p-12 border border-warm-gray-200">
-			<div class="grid md:grid-cols-2 gap-6 mb-6">
-				<div>
-					<label for="name" class="block font-display text-sm text-charcoal mb-2">Your Name</label>
-					<input
-						type="text"
-						id="name"
-						name="name"
-						class="w-full px-4 py-3 bg-cream border border-warm-gray-200 focus:border-charcoal focus:outline-none transition-colors font-body"
-						placeholder="Jane Smith"
-					/>
-				</div>
-				<div>
-					<label for="email" class="block font-display text-sm text-charcoal mb-2">Email Address</label>
-					<input
-						type="email"
-						id="email"
-						name="email"
-						class="w-full px-4 py-3 bg-cream border border-warm-gray-200 focus:border-charcoal focus:outline-none transition-colors font-body"
-						placeholder="jane@restaurant.com"
-					/>
-				</div>
+		<form class="space-y-8">
+			<div>
+				<label for="name" class="block text-sm text-warm-400 mb-2">Name</label>
+				<input
+					type="text"
+					id="name"
+					name="name"
+					class="w-full bg-transparent border-b border-warm-200 py-3 focus:border-coral focus:outline-none transition-colors"
+				/>
 			</div>
-			<div class="mb-6">
-				<label for="restaurant" class="block font-display text-sm text-charcoal mb-2">Restaurant Name</label>
+
+			<div>
+				<label for="email" class="block text-sm text-warm-400 mb-2">Email</label>
+				<input
+					type="email"
+					id="email"
+					name="email"
+					class="w-full bg-transparent border-b border-warm-200 py-3 focus:border-coral focus:outline-none transition-colors"
+				/>
+			</div>
+
+			<div>
+				<label for="restaurant" class="block text-sm text-warm-400 mb-2">Restaurant</label>
 				<input
 					type="text"
 					id="restaurant"
 					name="restaurant"
-					class="w-full px-4 py-3 bg-cream border border-warm-gray-200 focus:border-charcoal focus:outline-none transition-colors font-body"
-					placeholder="The Golden Spoon"
+					class="w-full bg-transparent border-b border-warm-200 py-3 focus:border-coral focus:outline-none transition-colors"
 				/>
 			</div>
-			<div class="mb-6">
-				<label for="message" class="block font-display text-sm text-charcoal mb-2">Tell Us About Your Restaurant</label>
+
+			<div>
+				<label for="message" class="block text-sm text-warm-400 mb-2">Message</label>
 				<textarea
 					id="message"
 					name="message"
 					rows="4"
-					class="w-full px-4 py-3 bg-cream border border-warm-gray-200 focus:border-charcoal focus:outline-none transition-colors font-body resize-none"
-					placeholder="What's your biggest phone challenge? How many calls do you get per day?"
+					class="w-full bg-transparent border-b border-warm-200 py-3 focus:border-coral focus:outline-none transition-colors resize-none"
 				></textarea>
 			</div>
-			<button type="submit" class="btn-primary w-full">
-				Start the Conversation
+
+			<button
+				type="submit"
+				class="group inline-flex items-center gap-4 mt-4"
+			>
+				<span class="text-sm tracking-wide">Send message</span>
+				<span class="w-12 h-px bg-ink group-hover:w-20 group-hover:bg-coral transition-all duration-500"></span>
 			</button>
 		</form>
 
-		<!-- Alternative Contact -->
-		<div class="mt-12 text-center">
-			<p class="font-body text-warm-gray-500 mb-4">Prefer to talk right now?</p>
-			<a href="tel:+18005551234" class="font-display text-xl text-charcoal hover:text-warm-gray-600 transition-colors">
-				(800) 555-1234
-			</a>
-		</div>
 	</div>
 </section>
 
+
 <!-- Footer -->
-<footer class="py-12 bg-charcoal text-cream">
-	<div class="max-w-6xl mx-auto px-6">
-		<div class="flex flex-col md:flex-row items-center justify-between gap-6">
-			<div class="font-display text-2xl font-semibold">
-				Table Talk
-			</div>
-			<div class="flex items-center gap-8">
-				<a href="#product" class="text-warm-gray-400 hover:text-cream transition-colors font-body text-sm">Product</a>
-				<a href="#pricing" class="text-warm-gray-400 hover:text-cream transition-colors font-body text-sm">Pricing</a>
-				<a href="#contact" class="text-warm-gray-400 hover:text-cream transition-colors font-body text-sm">Contact</a>
-			</div>
-			<p class="font-body text-warm-gray-500 text-sm">
-				&copy; 2025 Table Talk. All rights reserved.
-			</p>
+<footer class="px-6 md:px-12 py-12 border-t border-warm-200">
+	<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 max-w-6xl mx-auto">
+		<span class="font-display text-lg">Table Talk</span>
+
+		<div class="flex gap-8 text-sm text-warm-400">
+			<a href="#product" class="hover:text-ink transition-colors">Product</a>
+			<a href="#pricing" class="hover:text-ink transition-colors">Pricing</a>
+			<a href="#contact" class="hover:text-ink transition-colors">Contact</a>
 		</div>
+
+		<span class="text-sm text-warm-400">&copy; 2025</span>
 	</div>
 </footer>
+
+</div>
