@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { base } from '$app/paths';
 	import VoiceDemo from '$lib/components/VoiceDemo.svelte';
 
 	let menuOpen = $state(false);
@@ -134,7 +133,7 @@
 			</p>
 		</div>
 		<img
-			src="{base}/images/reservations.jpg"
+			src="/images/reservations.jpg"
 			alt="Elegant restaurant interior with warm lighting"
 			class="h-64 md:h-96 w-full object-cover"
 		/>
@@ -143,7 +142,7 @@
 	<!-- Feature: Menu Knowledge -->
 	<div class="grid md:grid-cols-2 gap-8 md:gap-0 mb-32 md:mb-48 px-6 md:px-0">
 		<img
-			src="{base}/images/menu-dish.jpg"
+			src="/images/menu-dish.jpg"
 			alt="Beautifully plated dish with fresh ingredients"
 			class="h-64 md:h-96 w-full object-cover order-2 md:order-1"
 		/>
@@ -170,7 +169,7 @@
 			</p>
 		</div>
 		<img
-			src="{base}/images/kitchen.jpg"
+			src="/images/kitchen.jpg"
 			alt="Chef preparing dishes in restaurant kitchen"
 			class="h-64 md:h-96 w-full object-cover"
 		/>

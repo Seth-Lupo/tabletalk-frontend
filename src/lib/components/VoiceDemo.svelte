@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import { base } from '$app/paths';
 	import { Conversation } from '@elevenlabs/client';
 	import { PUBLIC_ELEVENLABS_AGENT_ID } from '$env/static/public';
 
@@ -83,7 +82,7 @@
 
 	function startAmbientAudio() {
 		if (!ambientAudio) {
-			ambientAudio = new Audio(`${base}/audio/restaurant-ambience-phone.mp3`);
+			ambientAudio = new Audio('/audio/restaurant-ambience-phone.mp3');
 			ambientAudio.loop = true;
 			ambientAudio.volume = 0;
 		}
@@ -420,17 +419,7 @@
 		animation: subtle-pulse 0.8s ease-in-out infinite;
 	}
 
-	/* Signal bars */
-	@keyframes signal {
-		0%, 100% { opacity: 1; }
-		50% { opacity: 0.5; }
-	}
-	.animate-signal {
-		animation: signal 2s ease-in-out infinite;
-	}
-
 	/* Delay utilities */
-	.delay-100 { animation-delay: 0.1s; }
 	.delay-200 { animation-delay: 0.2s; }
 	.delay-300 { animation-delay: 0.3s; }
 	.delay-400 { animation-delay: 0.4s; }
