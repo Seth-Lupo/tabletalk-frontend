@@ -2,6 +2,29 @@
 	import VoiceDemo from '$lib/components/VoiceDemo.svelte';
 
 	let menuOpen = $state(false);
+
+	// Contact form
+	let formData = $state({ name: '', email: '', restaurant: '', message: '' });
+	let formStatus = $state<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+	async function handleSubmit(e: Event) {
+		e.preventDefault();
+		formStatus = 'sending';
+
+		try {
+			await fetch('https://script.google.com/macros/s/AKfycbzLjARbJXvlc8q72UJH3ktJk8BMl_DDE0_UDiXG7VKCmmB1LKJLlNob7moZNzDbCVIz/exec', {
+				method: 'POST',
+				mode: 'no-cors',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(formData)
+			});
+			formStatus = 'success';
+			formData = { name: '', email: '', restaurant: '', message: '' };
+		} catch (err) {
+			console.error('Form submission error:', err);
+			formStatus = 'error';
+		}
+	}
 </script>
 
 <svelte:head>
@@ -84,7 +107,7 @@
 
 
 <!-- Product -->
-<section id="product" class="py-32 md:py-48">
+<section id="product" class="py-16 md:py-24">
 
 	<!-- Opening statement -->
 	<div class="px-6 md:px-12 mb-32 md:mb-48">
@@ -107,12 +130,20 @@
 				No missed opportunities.
 			</p>
 		</div>
-		<div class="bg-stone h-64 md:h-auto"></div>
+		<img
+			src="/images/reservations.jpg"
+			alt="Elegant restaurant interior with warm lighting"
+			class="h-64 md:h-96 w-full object-cover"
+		/>
 	</div>
 
 	<!-- Feature: Menu Knowledge -->
 	<div class="grid md:grid-cols-2 gap-8 md:gap-0 mb-32 md:mb-48 px-6 md:px-0">
-		<div class="bg-stone h-64 md:h-96 order-2 md:order-1"></div>
+		<img
+			src="/images/menu-dish.jpg"
+			alt="Beautifully plated dish with fresh ingredients"
+			class="h-64 md:h-96 w-full object-cover order-2 md:order-1"
+		/>
 		<div class="md:pl-24 md:pr-12 flex flex-col justify-center order-1 md:order-2">
 			<p class="text-coral text-sm tracking-wide mb-4">02</p>
 			<h3 class="font-display text-3xl md:text-4xl mb-6">Menu & allergens</h3>
@@ -135,7 +166,11 @@
 				Just direct connection.
 			</p>
 		</div>
-		<div class="bg-stone h-64 md:h-auto"></div>
+		<img
+			src="/images/kitchen.jpg"
+			alt="Chef preparing dishes in restaurant kitchen"
+			class="h-64 md:h-96 w-full object-cover"
+		/>
 	</div>
 
 	<!-- Integrations marquee -->
@@ -175,16 +210,13 @@
 		</div>
 	</div>
 
-	<!-- Pull quote -->
+	<!-- Vision statement -->
 	<div class="px-6 md:px-12 py-24 md:py-32 bg-ink text-cream">
-		<blockquote class="max-w-4xl mx-auto text-center">
-			<p class="font-display text-3xl md:text-5xl lg:text-6xl italic leading-[1.2] mb-12">
-				"It's like having our best host answer every call"
+		<div class="max-w-4xl mx-auto text-center">
+			<p class="font-display text-3xl md:text-5xl lg:text-6xl italic leading-[1.2]">
+				Like having your best host answer every call
 			</p>
-			<footer class="text-warm-400 text-sm tracking-wide">
-				Maria Chen, The Willow Room
-			</footer>
-		</blockquote>
+		</div>
 	</div>
 
 	<!-- The difference -->
@@ -246,18 +278,20 @@
 			</p>
 
 			<div class="space-y-4 text-warm-400">
-				<p>hello@tabletalk.ai</p>
-				<p>(800) 555-1234</p>
+				<p>jonathan@usetabletalk.com</p>
+				<p>(212) 333-7600</p>
 			</div>
 		</div>
 
-		<form class="space-y-8">
+		<form class="space-y-8" onsubmit={handleSubmit}>
 			<div>
 				<label for="name" class="block text-sm text-warm-400 mb-2">Name</label>
 				<input
 					type="text"
 					id="name"
 					name="name"
+					required
+					bind:value={formData.name}
 					class="w-full bg-transparent border-b border-warm-200 py-3 focus:border-coral focus:outline-none transition-colors"
 				/>
 			</div>
@@ -268,6 +302,8 @@
 					type="email"
 					id="email"
 					name="email"
+					required
+					bind:value={formData.email}
 					class="w-full bg-transparent border-b border-warm-200 py-3 focus:border-coral focus:outline-none transition-colors"
 				/>
 			</div>
@@ -278,6 +314,7 @@
 					type="text"
 					id="restaurant"
 					name="restaurant"
+					bind:value={formData.restaurant}
 					class="w-full bg-transparent border-b border-warm-200 py-3 focus:border-coral focus:outline-none transition-colors"
 				/>
 			</div>
@@ -288,15 +325,25 @@
 					id="message"
 					name="message"
 					rows="4"
+					bind:value={formData.message}
 					class="w-full bg-transparent border-b border-warm-200 py-3 focus:border-coral focus:outline-none transition-colors resize-none"
 				></textarea>
 			</div>
 
+			{#if formStatus === 'success'}
+				<p class="text-green-600 text-sm">Thanks! We'll be in touch soon.</p>
+			{:else if formStatus === 'error'}
+				<p class="text-coral text-sm">Something went wrong. Please try again.</p>
+			{/if}
+
 			<button
 				type="submit"
-				class="group inline-flex items-center gap-4 mt-4"
+				disabled={formStatus === 'sending'}
+				class="group inline-flex items-center gap-4 mt-4 disabled:opacity-50"
 			>
-				<span class="text-sm tracking-wide">Send message</span>
+				<span class="text-sm tracking-wide">
+					{formStatus === 'sending' ? 'Sending...' : 'Send message'}
+				</span>
 				<span class="w-12 h-px bg-ink group-hover:w-20 group-hover:bg-coral transition-all duration-500"></span>
 			</button>
 		</form>

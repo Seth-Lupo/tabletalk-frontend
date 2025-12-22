@@ -291,10 +291,9 @@
 						<div class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-cream animate-dial-dot delay-400"></div>
 					</div>
 				{:else}
-					<!-- Mic icon when idle -->
+					<!-- Phone icon when idle -->
 					<svg class="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 text-cream transition-transform group-hover:scale-110 drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
-						<path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
-						<path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+						<path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
 					</svg>
 				{/if}
 			</div>
