@@ -10,4 +10,12 @@ declare global {
 	}
 }
 
+interface ImportMetaEnv {
+	readonly PUBLIC_ELEVENLABS_AGENT_ID: string;
+}
+
+interface ImportMeta {
+	readonly env: ImportMetaEnv;
+}
+
 export {};

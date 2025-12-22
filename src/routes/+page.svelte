@@ -1,4 +1,6 @@
 <script lang="ts">
+	import VoiceDemo from '$lib/components/VoiceDemo.svelte';
+
 	let menuOpen = $state(false);
 </script>
 
@@ -41,34 +43,42 @@
 
 
 <!-- Hero -->
-<section class="min-h-screen flex flex-col justify-end px-6 md:px-12 pb-24 md:pb-32">
+<section class="min-h-screen flex items-center px-6 md:px-12 pt-20 pb-16">
 
-	<div class="max-w-7xl">
-		<p class="text-warm-400 text-sm tracking-wide mb-8 reveal">For restaurants that care</p>
+	<div class="w-full grid lg:grid-cols-2 gap-16 lg:gap-8 items-center">
 
-		<h1 class="text-5xl md:text-7xl lg:text-[8rem] xl:text-[10rem] leading-[0.9] reveal delay-1">
-			Never miss
-		</h1>
+		<!-- Left: Content -->
+		<div class="lg:pr-8">
+			<p class="text-warm-400 text-sm tracking-wide mb-6 reveal">For restaurants that care</p>
 
-		<div class="flex items-baseline gap-4 md:gap-8 reveal delay-2">
-			<span class="text-5xl md:text-7xl lg:text-[8rem] xl:text-[10rem] font-display italic">a call</span>
-			<span class="text-coral text-2xl md:text-4xl">again</span>
+			<h1 class="text-4xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.95] reveal delay-1 mb-2">
+				Never miss
+			</h1>
+
+			<div class="flex items-baseline gap-3 md:gap-5 reveal delay-2 mb-12 lg:mb-16">
+				<span class="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-display italic">a call</span>
+				<span class="text-coral text-xl md:text-2xl lg:text-3xl">again</span>
+			</div>
+
+			<p class="text-warm-600 max-w-md text-lg mb-8 reveal delay-3">
+				Your AI voice agent handles reservations, answers questions,
+				and takes orders while you focus on your guests.
+			</p>
+
+			<a
+				href="#contact"
+				class="group inline-flex items-center gap-4 text-ink reveal delay-3"
+			>
+				<span class="text-sm tracking-wide">Start free trial</span>
+				<span class="w-12 h-px bg-ink group-hover:w-20 group-hover:bg-coral transition-all duration-500"></span>
+			</a>
 		</div>
-	</div>
 
-	<div class="mt-24 md:mt-32 flex flex-col md:flex-row md:items-end justify-between gap-12 reveal delay-3">
-		<p class="text-warm-600 max-w-md text-lg">
-			Your AI voice agent handles reservations, answers questions,
-			and takes orders while you focus on your guests.
-		</p>
+		<!-- Right: Voice Demo -->
+		<div class="reveal delay-4 flex items-center justify-center py-12 lg:py-0">
+			<VoiceDemo />
+		</div>
 
-		<a
-			href="#contact"
-			class="group inline-flex items-center gap-4 text-ink"
-		>
-			<span class="text-sm tracking-wide">Start free trial</span>
-			<span class="w-12 h-px bg-ink group-hover:w-20 group-hover:bg-coral transition-all duration-500"></span>
-		</a>
 	</div>
 </section>
 
@@ -196,63 +206,26 @@
 <!-- Pricing -->
 <section id="pricing" class="px-6 md:px-12 py-32 md:py-48 bg-stone">
 
-	<div class="max-w-6xl mx-auto">
+	<div class="max-w-4xl mx-auto text-center">
 
-		<div class="mb-24 md:mb-32">
-			<h2 class="font-display text-4xl md:text-6xl mb-6">Pricing</h2>
-			<p class="text-warm-600 max-w-md">
-				No hidden fees. No long contracts.
-				Cancel anytime.
-			</p>
-		</div>
+		<p class="text-coral text-sm tracking-wide mb-6">Pricing</p>
+		<h2 class="font-display text-4xl md:text-6xl lg:text-7xl mb-8">
+			Tailored to your<br /><span class="italic">restaurant</span>
+		</h2>
+		<p class="text-warm-600 text-lg md:text-xl max-w-2xl mx-auto mb-12">
+			Every restaurant is different. We'll build a plan around your call volume,
+			integrations, and unique needs. No hidden fees, cancel anytime.
+		</p>
 
-		<div class="grid md:grid-cols-3 gap-px bg-warm-200">
-
-			<!-- Starter -->
-			<div class="bg-stone p-8 md:p-12">
-				<p class="text-sm text-warm-400 mb-8">Starter</p>
-				<p class="font-display text-5xl md:text-6xl mb-2">$149</p>
-				<p class="text-warm-400 mb-12">/month</p>
-
-				<ul class="space-y-4 text-warm-600">
-					<li>500 calls/month</li>
-					<li>Reservation integration</li>
-					<li>Menu & allergen info</li>
-					<li>Basic analytics</li>
-				</ul>
-			</div>
-
-			<!-- Professional -->
-			<div class="bg-cream p-8 md:p-12 relative">
-				<span class="absolute top-0 left-0 right-0 h-1 bg-coral"></span>
-				<p class="text-sm text-coral mb-8">Professional</p>
-				<p class="font-display text-5xl md:text-6xl mb-2">$299</p>
-				<p class="text-warm-400 mb-12">/month</p>
-
-				<ul class="space-y-4 text-warm-600">
-					<li>2,000 calls/month</li>
-					<li>Everything in Starter</li>
-					<li>Phone ordering</li>
-					<li>Custom voice</li>
-					<li>Priority support</li>
-				</ul>
-			</div>
-
-			<!-- Enterprise -->
-			<div class="bg-stone p-8 md:p-12">
-				<p class="text-sm text-warm-400 mb-8">Enterprise</p>
-				<p class="font-display text-5xl md:text-6xl mb-2">Custom</p>
-				<p class="text-warm-400 mb-12">Let's talk</p>
-
-				<ul class="space-y-4 text-warm-600">
-					<li>Unlimited calls</li>
-					<li>Multi-location</li>
-					<li>Custom integrations</li>
-					<li>Dedicated manager</li>
-				</ul>
-			</div>
-
-		</div>
+		<a
+			href="#contact"
+			class="inline-flex items-center gap-4 bg-ink text-cream px-8 py-4 hover:bg-warm-600 transition-colors"
+		>
+			<span class="font-display tracking-wide">Get a custom quote</span>
+			<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+			</svg>
+		</a>
 
 	</div>
 </section>
