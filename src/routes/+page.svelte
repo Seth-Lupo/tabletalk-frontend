@@ -128,6 +128,43 @@
 		<div class="bg-stone h-64 md:h-auto"></div>
 	</div>
 
+	<!-- Integrations marquee -->
+	<div class="py-20 md:py-28 overflow-hidden border-y border-warm-200">
+		<p class="text-center text-warm-400 text-sm tracking-wide mb-12">Works with what you already use</p>
+		<div class="relative">
+			<div class="marquee flex whitespace-nowrap">
+				{#each [1, 2] as _}
+					<span class="flex items-center gap-8 md:gap-16 px-4 md:px-8 text-2xl md:text-3xl lg:text-4xl text-warm-600 font-display">
+						<span>OpenTable</span>
+						<span class="text-coral text-lg">·</span>
+						<span>Resy</span>
+						<span class="text-coral text-lg">·</span>
+						<span class="italic">SevenRooms</span>
+						<span class="text-coral text-lg">·</span>
+						<span>Tock</span>
+						<span class="text-coral text-lg">·</span>
+						<span>Yelp</span>
+						<span class="text-coral text-lg">·</span>
+						<span class="italic">Toast</span>
+						<span class="text-coral text-lg">·</span>
+						<span>Square</span>
+						<span class="text-coral text-lg">·</span>
+						<span>Clover</span>
+						<span class="text-coral text-lg">·</span>
+						<span class="italic">ChowNow</span>
+						<span class="text-coral text-lg">·</span>
+						<span>TouchBistro</span>
+						<span class="text-coral text-lg">·</span>
+						<span>Lightspeed</span>
+						<span class="text-coral text-lg">·</span>
+						<span class="italic">Revel</span>
+						<span class="text-coral text-lg">·</span>
+					</span>
+				{/each}
+			</div>
+		</div>
+	</div>
+
 	<!-- Pull quote -->
 	<div class="px-6 md:px-12 py-24 md:py-32 bg-ink text-cream">
 		<blockquote class="max-w-4xl mx-auto text-center">
