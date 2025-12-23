@@ -92,7 +92,7 @@
 				href="#contact"
 				class="inline-flex items-center gap-3 bg-coral text-cream px-6 py-3 hover:bg-coral/90 transition-colors reveal delay-3"
 			>
-				<span class="text-sm font-medium tracking-wide">Start free trial</span>
+				<span class="text-sm font-medium tracking-wide">Contact us</span>
 				<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
 				</svg>
@@ -115,8 +115,7 @@
 	<div class="px-6 md:px-12 mb-32 md:mb-48">
 		<div class="max-w-6xl ml-auto">
 			<h2 class="font-display text-4xl md:text-6xl lg:text-7xl max-w-4xl leading-[1.1]">
-				A warm voice that knows your restaurant
-				<span class="italic text-warm-400">inside and out</span>
+				Never have to pick up the phone again during peak hours
 			</h2>
 		</div>
 	</div>
@@ -127,7 +126,7 @@
 			<p class="text-coral text-sm tracking-wide mb-4">01</p>
 			<h3 class="font-display text-3xl md:text-4xl mb-6">Reservations</h3>
 			<p class="text-warm-600 text-lg">
-				Connects to OpenTable, Resy, or your system. Books tables,
+				Connects to Linga, OpenTable, Resy, or your system. Books tables,
 				confirms parties, handles special requests. No hold music.
 				No missed opportunities.
 			</p>
